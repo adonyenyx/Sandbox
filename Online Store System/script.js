@@ -23,11 +23,27 @@ function Product(name, category, price){
     console.log(`${this.name}, ${this.category}, ${this.price}, ${this.stock}`);
     return this;
   }
+
+  this.showManufacturer = function() {
+    if(this.manufacturer?.company?.name){
+      console.log(`${this.manufacturer?.company?.name}`);
+      return this; 
+    }
+    console.log("Manufacturer Unknown");
+    return this;
+  }
 }
 
 
-let product = new Product("Laptop", "Tech", 150) 
+let product1 = new Product("Laptop", "Tech", 1800);
+let product2 = new Product("Phone", "Tech", 1000);
 
-product.manufacturer = {
-  
+product1.manufacturer = {
+  company: {
+    name: "xyx",
+    country: "United States"
+  } 
 }
+product1.showManufacturer();
+
+
