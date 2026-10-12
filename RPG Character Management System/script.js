@@ -47,3 +47,50 @@ Method Chaining on one character
   */ 
 
 
+function Character(name, type, level){
+  this.health = 100; 
+  this.gold = 50; 
+  this.inventory = [];
+
+  // Methods 
+
+  this.takeDamage = function(amount) {
+    this.health -= amount; 
+    return this; 
+  }
+
+  this.heal = function(amount){
+    this.health += amount; 
+    return this
+  }
+
+  this.earnGold = function(amount){
+    this.gold += amount; 
+    return this; 
+  }
+  
+  this.spendGold = function(amount){
+    if(this.gold >= amount){
+      this.gold -= amount
+    } else {
+      console.log("Error: Insufficent funds!")
+    }
+    return this; 
+  }
+
+  this.addItem = function(item){
+    this.inventory += item; 
+    return this; 
+  }
+
+  this.showInfo = function(){
+    console.log(`
+      ${this.health},
+      ${this.gold}, 
+      ${this.inventory}
+      `)
+     return this;  
+  }
+}
+
+
