@@ -103,13 +103,25 @@ function Character(name, type, level){
 }
 
 
-let char1 = new Character("Adonyx", "Warrior", 25); 
+let char1 = new Character("Adonyx", "Warrior", 40); 
+let char2 = new Character("AsoJuKai", "Warrior", 70); 
+let char3 = new Character("Bario", "Mage", 80); 
+let char4 = new Character("Theo", "Devil", 90); 
+let char5 = new Character("Gabriel", "Angel", 100); 
+
+let characters = [char1, char2, char3, char4, char5]; 
+
+let warriors = characters.filter((character) => character.type === "Warrior"); 
+
 
 char1.companion = {
     type: "Dog",
     name: "Lucas"
   }
 
-char1.showInfo().showCompanion();
+for(let key in char1){
+  console.log(key, char1[key]);
+}
+// char1.showInfo().showCompanion();
 
-
+// console.log(warriors);
