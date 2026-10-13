@@ -119,9 +119,29 @@ char1.companion = {
     name: "Lucas"
   }
 
-for(let key in char1){
-  console.log(key, char1[key]);
-}
+
+let obj = {
+  name: "nyx", 
+  type: "tech",
+
+  meals: {
+    type: "Pasta",
+  },
+
+  sayHello() {
+    console.log("Hello"); 
+  }
+}  
+
+let newObj = Object.assign({}, obj);
+let deepNewObj = structuredClone(obj); 
+
+console.log(hyg); 
+// Task #4 
+// for(let key in char1){
+//   console.log(key, char1[key]);
+// }
+
 // char1.showInfo().showCompanion();
 
 // console.log(warriors);
