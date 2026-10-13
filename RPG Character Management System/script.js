@@ -48,6 +48,9 @@ Method Chaining on one character
 
 
 function Character(name, type, level){
+  this.name = name; 
+  this.type = type; 
+  this.level = level; 
   this.health = 100; 
   this.gold = 50; 
   this.inventory = [];
@@ -61,7 +64,7 @@ function Character(name, type, level){
 
   this.heal = function(amount){
     this.health += amount; 
-    return this
+    return this;
   }
 
   this.earnGold = function(amount){
@@ -84,13 +87,29 @@ function Character(name, type, level){
   }
 
   this.showInfo = function(){
-    console.log(`
-      ${this.health},
-      ${this.gold}, 
-      ${this.inventory}
+    console.log(`Player: ${this.name}, Class: ${this.type}, LVL: ${this.level}{\n  Health: ${this.health},\n  Gold: ${this.gold}\n  Inventory: ${this.inventory}\n}
       `)
      return this;  
   }
+
+  this.showCompanion = function(){
+    if(this?.companion){
+      console.log(`Companion: {\n Type: ${this.companion.type}\n Name: ${this?.companion?.name}\n}`)
+    } else{
+      console.log("Has No Companion!")
+    }
+    return this; 
+  }
 }
+
+
+let char1 = new Character("Adonyx", "Warrior", 25); 
+
+char1.companion = {
+    type: "Dog",
+    name: "Lucas"
+  }
+
+char1.showInfo().showCompanion();
 
 
