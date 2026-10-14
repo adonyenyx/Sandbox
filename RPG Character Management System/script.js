@@ -38,7 +38,7 @@ Object copying challenge:
 Implement method to return wanted primitve
   string - return the characters name and class
   number - return the characters level
-  default - retunr the characters level 
+  default - return the characters level 
   Test (Predict before running)
 
 Method Chaining on one character
@@ -56,6 +56,15 @@ function Character(name, type, level){
   this.inventory = [];
 
   // Methods 
+
+  
+  this[Symbol.toPrimitive] = function(hint){
+    if(hint === "string"){
+      return `${this.name} - ${this.type}`; 
+    } else{
+      return this.level;
+    }
+  }
 
   this.takeDamage = function(amount) {
     this.health -= amount; 
@@ -100,6 +109,7 @@ function Character(name, type, level){
     }
     return this; 
   }
+
 }
 
 
@@ -134,9 +144,8 @@ let obj = {
 }  
 
 let newObj = Object.assign({}, obj);
-let deepNewObj = structuredClone(obj); 
+// let deepNewObj = structuredClone(obj); 
 
-console.log(hyg); 
 // Task #4 
 // for(let key in char1){
 //   console.log(key, char1[key]);
@@ -145,3 +154,5 @@ console.log(hyg);
 // char1.showInfo().showCompanion();
 
 // console.log(warriors);
+
+console.log("Hello" + " " + String(char1))

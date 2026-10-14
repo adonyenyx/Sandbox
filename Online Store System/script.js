@@ -62,7 +62,8 @@ product1.manufacturer = {
 const techProducts = products.filter((product) => product.category === "Tech"); 
 
 
-for(let key in products[0]){
-  console.log([key], products[0][key])
-}
+// for(let key in products[0]){
+//   console.log([key], products[0][key])
+// }
 
+console.log(String(product2));
