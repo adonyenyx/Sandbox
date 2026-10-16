@@ -67,13 +67,22 @@ function Character(name, type, level){
   }
 
   this.takeDamage = function(amount) {
-    this.health -= amount; 
+    if(this.health - amount <= 0){
+      this.health = 0; 
+    }
+    else{
+      this.health -= amount;
+    }
     return this; 
   }
 
   this.heal = function(amount){
-    this.health += amount; 
-    return this;
+    if(this.health + amount > 100){
+      this.health = 100; 
+    } else {
+     this.health += amount;
+    }
+     return this;
   }
 
   this.earnGold = function(amount){
@@ -82,16 +91,16 @@ function Character(name, type, level){
   }
   
   this.spendGold = function(amount){
-    if(this.gold >= amount){
-      this.gold -= amount
+    if(this.gold - amount < 0){
+      console.log("Error: Insufficent funds!");
     } else {
-      console.log("Error: Insufficent funds!")
+      this.gold -= amount; 
     }
     return this; 
   }
 
   this.addItem = function(item){
-    this.inventory += item; 
+    this.inventory.push(item); 
     return this; 
   }
 
@@ -102,8 +111,8 @@ function Character(name, type, level){
   }
 
   this.showCompanion = function(){
-    if(this?.companion){
-      console.log(`Companion: {\n Type: ${this.companion.type}\n Name: ${this?.companion?.name}\n}`)
+    if(this.companion){
+      console.log(`Companion: {\n Type: ${this.companion?.type}\n Name: ${this.companion?.name}\n}`)
     } else{
       console.log("Has No Companion!")
     }
@@ -144,7 +153,20 @@ let obj = {
 }  
 
 let newObj = Object.assign({}, obj);
-// let deepNewObj = structuredClone(obj); 
+delete newObj.sayHello;
+
+let deepNewObj = structuredClone(newObj);
+deepNewObj.meals.type = "Pizza" 
+
+
+
+console.log(obj.meals.type);
+console.log(newObj.meals.type);
+console.log(deepNewObj.meals.type);
+
+
+// char1.addItem("Ak47").showInfo().takeDamage(120).spendGold(100).showInfo();
+
 
 // Task #4 
 // for(let key in char1){
@@ -155,4 +177,4 @@ let newObj = Object.assign({}, obj);
 
 // console.log(warriors);
 
-console.log("Hello" + " " + String(char1))
+// console.log("Hello" + " " + String(char1))
